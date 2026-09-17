@@ -1,0 +1,297 @@
+/* ============================================
+   BST Visualizer Styles — Educational Laboratory
+   The visualizer canvas is the centerpiece
+   ============================================ */
+
+.bst-visualizer {
+  padding: var(--space-6);
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+}
+
+/* ---- Header ---- */
+.viz-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--space-6);
+  gap: var(--space-4);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.viz-header-info {
+  max-width: 720px;
+}
+
+.viz-badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--accent-primary);
+  background: var(--accent-primary-muted);
+  padding: 2px 7px;
+  border-radius: var(--radius-xs);
+  margin-bottom: var(--space-2);
+}
+
+.viz-title {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.025em;
+  margin-bottom: var(--space-2);
+}
+
+.viz-desc {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+}
+
+.viz-stats {
+  display: flex;
+  gap: var(--space-3);
+  flex-shrink: 0;
+}
+
+.viz-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 14px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  min-width: 64px;
+  box-shadow: var(--shadow-sm);
+}
+
+.viz-stat-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-tertiary);
+}
+
+.viz-stat-value {
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-top: 1px;
+}
+
+/* ---- Layout: Dominant Canvas on Left, Telemetry on Right ---- */
+.viz-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(360px, 1fr);
+  gap: var(--space-5);
+  align-items: start;
+}
+
+.viz-main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  min-width: 0;
+}
+
+.viz-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  min-width: 0;
+}
+
+/* ---- Controls Bar ---- */
+.viz-controls-bar {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  box-shadow: var(--shadow-sm);
+}
+
+.viz-bulk-bar {
+  display: flex;
+  gap: var(--space-2);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+}
+
+.viz-input-group {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.viz-input {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  padding: 6px 10px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xs);
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color var(--transition-fast);
+  width: 120px;
+}
+
+.viz-input:focus {
+  border-color: var(--accent-primary);
+  background: var(--bg-surface);
+}
+
+.viz-input-wide {
+  flex: 1;
+  width: auto;
+}
+
+/* ---- Buttons ---- */
+.viz-btn {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 6px 11px;
+  border-radius: var(--radius-xs);
+  border: 1px solid var(--border-subtle);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.viz-btn:active {
+  transform: scale(0.98);
+}
+
+.viz-btn-insert {
+  background: var(--accent-primary);
+  color: #FFFFFF;
+  border-color: var(--accent-primary);
+}
+.viz-btn-insert:hover {
+  background: var(--accent-primary-hover);
+}
+
+.viz-btn-search {
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  border-color: var(--border-default);
+}
+.viz-btn-search:hover {
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+}
+
+.viz-btn-delete {
+  background: var(--bg-surface);
+  color: #DC2626;
+  border-color: #FCA5A5;
+}
+.viz-btn-delete:hover {
+  background: #FEF2F2;
+}
+
+.viz-btn-secondary {
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  border-color: var(--border-subtle);
+}
+.viz-btn-secondary:hover {
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  border-color: var(--border-default);
+}
+
+.viz-btn-ghost {
+  background: transparent;
+  color: var(--text-tertiary);
+  border-color: transparent;
+}
+.viz-btn-ghost:hover {
+  color: var(--text-primary);
+  background: var(--bg-secondary);
+}
+
+/* ---- Info Panel ---- */
+.viz-info-panel {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  box-shadow: var(--shadow-sm);
+}
+
+.viz-info-title {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-tertiary);
+  margin-bottom: 6px;
+}
+
+.viz-info-text {
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+}
+
+.viz-info-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 4px;
+}
+
+.viz-info-list li {
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  padding: 2px 0 2px 14px;
+  position: relative;
+  line-height: 1.4;
+}
+
+.viz-info-list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--accent-primary);
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 1024px) {
+  .viz-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .bst-visualizer {
+    padding: var(--space-3);
+  }
+  .viz-header {
+    flex-direction: column;
+  }
+  .viz-controls-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .viz-input-group {
+    flex-wrap: wrap;
+  }
+}

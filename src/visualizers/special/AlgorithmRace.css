@@ -1,0 +1,802 @@
+/* ============================================
+   Algorithm Race — Neo-Brutalist Competition Lab
+   Full visual race with animated bar tracks,
+   live metrics, winner detection, and
+   performance comparison.
+   ============================================ */
+
+.race-page {
+  padding: var(--space-6);
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+/* ---- Intro Header ---- */
+.race-hero {
+  text-align: center;
+  padding: var(--space-8) var(--space-4);
+}
+
+.race-hero-badge {
+  margin-bottom: var(--space-3);
+}
+
+.race-hero-title {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: var(--weight-black);
+  letter-spacing: -0.04em;
+  color: var(--text-primary);
+  line-height: var(--leading-tight);
+  margin-bottom: var(--space-3);
+}
+
+.race-hero-desc {
+  font-size: var(--text-md);
+  color: var(--text-secondary);
+  max-width: 56ch;
+  margin: 0 auto;
+  line-height: var(--leading-relaxed);
+}
+
+/* ---- Configuration Panel ---- */
+.race-config {
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.race-config-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.race-config-title {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-tertiary);
+}
+
+.race-algo-grid {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.race-algo-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: var(--space-3) var(--space-4);
+  border: var(--border-black);
+  background: var(--bg-surface);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-family: var(--font-sans);
+  min-width: 130px;
+  box-shadow: var(--shadow-brutal-sm);
+}
+
+.race-algo-btn:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: var(--shadow-brutal);
+}
+
+.race-algo-btn:active {
+  transform: translate(1px, 1px);
+  box-shadow: none;
+}
+
+.race-algo-btn-active {
+  background: var(--brutal-yellow);
+  color: #000000;
+}
+
+.race-algo-name {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  color: inherit;
+}
+
+.race-algo-complexity {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+}
+
+.race-algo-btn-active .race-algo-complexity {
+  color: #333;
+}
+
+/* Data config row */
+.race-data-config {
+  display: flex;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+
+.race-config-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.race-config-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  font-weight: var(--weight-bold);
+}
+
+.race-select,
+.race-input-field {
+  padding: 8px 12px;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  border: var(--border-black);
+  box-shadow: var(--shadow-brutal-sm);
+  outline: none;
+  min-width: 120px;
+}
+
+.race-input-field {
+  min-width: 200px;
+}
+
+.race-select:focus,
+.race-input-field:focus {
+  box-shadow: var(--shadow-brutal);
+  border-color: var(--brutal-blue);
+}
+
+/* Speed buttons */
+.race-speed-row {
+  display: flex;
+  gap: var(--space-1);
+}
+
+.race-speed-btn {
+  padding: 6px 14px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: var(--weight-bold);
+  border: var(--border-black-thin);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.race-speed-btn:hover {
+  background: var(--bg-secondary);
+}
+
+.race-speed-btn-active {
+  background: var(--brutal-blue);
+  color: #FFFFFF;
+}
+
+/* Controls row */
+.race-controls {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  padding-top: var(--space-2);
+  border-top: var(--border-black-thin);
+}
+
+.race-ctrl-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 20px;
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  border: var(--border-black);
+  box-shadow: var(--shadow-brutal);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  user-select: none;
+}
+
+.race-ctrl-btn:hover:not(:disabled) {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-brutal-lg);
+}
+
+.race-ctrl-btn:active:not(:disabled) {
+  transform: translate(2px, 2px);
+  box-shadow: var(--shadow-brutal-sm);
+}
+
+.race-ctrl-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.race-ctrl-start {
+  background: var(--brutal-lime);
+  color: #000000;
+}
+
+.race-ctrl-pause {
+  background: var(--brutal-yellow);
+  color: #000000;
+}
+
+.race-ctrl-step {
+  background: var(--brutal-blue);
+  color: #FFFFFF;
+}
+
+.race-ctrl-reset {
+  background: var(--bg-surface);
+  color: var(--text-primary);
+}
+
+.race-ctrl-random {
+  background: var(--brutal-pink);
+  color: #000000;
+}
+
+/* ---- Race Arena ---- */
+.race-arena {
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+/* Current leader banner */
+.race-leader-banner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  background: var(--bg-tertiary);
+  border: var(--border-black-thin);
+  box-shadow: var(--shadow-brutal-sm);
+}
+
+.race-leader-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-tertiary);
+}
+
+.race-leader-name {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-black);
+  color: var(--text-primary);
+}
+
+/* Individual algorithm track */
+.race-tracks {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.race-track {
+  padding: var(--space-4);
+  border: var(--border-black);
+  box-shadow: var(--shadow-brutal-sm);
+  background: var(--bg-surface);
+  transition: box-shadow var(--transition-fast);
+}
+
+.race-track-finished {
+  border-color: var(--brutal-lime);
+}
+
+.race-track-leader {
+  box-shadow: var(--shadow-brutal);
+}
+
+.race-track-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-3);
+  gap: var(--space-3);
+}
+
+.race-track-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.race-track-rank {
+  font-family: var(--font-mono);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-black);
+  min-width: 28px;
+}
+
+.race-track-name {
+  font-family: var(--font-display);
+  font-size: var(--text-md);
+  font-weight: var(--weight-bold);
+}
+
+.race-track-complexity {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+}
+
+.race-track-metrics {
+  display: flex;
+  gap: var(--space-4);
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+
+.race-track-metric {
+  display: flex;
+  gap: 4px;
+}
+
+.race-track-metric-label {
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-size: 9px;
+  letter-spacing: 0.04em;
+}
+
+.race-track-metric-val {
+  font-weight: var(--weight-bold);
+  color: var(--text-primary);
+}
+
+/* Bar visualization area */
+.race-bars-container {
+  height: 100px;
+  display: flex;
+  align-items: flex-end;
+  gap: 1px;
+  padding: var(--space-2) 0;
+  border-bottom: var(--border-black-thin);
+  overflow: hidden;
+}
+
+.race-bar {
+  flex: 1;
+  min-width: 2px;
+  border: 1.5px solid var(--border-default);
+  border-bottom: none;
+  transition: height 60ms ease, background-color 80ms ease;
+  position: relative;
+}
+
+.race-bar-default {
+  background: var(--bg-tertiary);
+}
+
+.race-bar-active {
+  background: var(--brutal-yellow);
+  border-color: #000000;
+  z-index: 1;
+}
+
+.race-bar-swapping {
+  background: var(--brutal-coral);
+  border-color: #000000;
+  z-index: 2;
+}
+
+.race-bar-sorted {
+  background: var(--brutal-lime);
+  border-color: #000000;
+}
+
+.race-bar-pivot {
+  background: var(--brutal-blue);
+  border-color: #000000;
+  z-index: 2;
+}
+
+.race-bar-merge {
+  background: var(--brutal-purple);
+  border-color: #000000;
+}
+
+.race-bar-heap {
+  background: var(--brutal-pink);
+  border-color: #000000;
+}
+
+.race-bar-label {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-mono);
+  font-size: 8px;
+  font-weight: var(--weight-bold);
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+/* Progress bar */
+.race-progress-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+
+.race-progress-bar {
+  flex: 1;
+  height: 8px;
+  background: var(--bg-tertiary);
+  border: 1.5px solid var(--border-default);
+  overflow: hidden;
+}
+
+.race-progress-fill {
+  height: 100%;
+  transition: width 80ms linear;
+}
+
+.race-progress-pct {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: var(--weight-bold);
+  color: var(--text-secondary);
+  min-width: 36px;
+  text-align: right;
+}
+
+/* ---- Explanation Panel ---- */
+.race-explanation {
+  padding: var(--space-4);
+  border: var(--border-black-thin);
+  background: var(--bg-secondary);
+}
+
+.race-explanation-title {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-tertiary);
+  margin-bottom: var(--space-2);
+}
+
+.race-explanation-algo {
+  font-family: var(--font-display);
+  font-size: var(--text-md);
+  font-weight: var(--weight-bold);
+  color: var(--text-primary);
+  margin-bottom: var(--space-1);
+}
+
+.race-explanation-text {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+}
+
+/* ---- Winner Announcement ---- */
+.race-winner-section {
+  padding: var(--space-6);
+  text-align: center;
+}
+
+.race-winner-card {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-6) var(--space-10);
+  background: var(--brutal-yellow);
+  border: var(--border-black-thick);
+  box-shadow: var(--shadow-brutal-xl);
+  color: #000000;
+}
+
+.race-winner-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #333;
+}
+
+.race-winner-name {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: var(--weight-black);
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.race-winner-stats {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: #333;
+}
+
+/* ---- Final Standings ---- */
+.race-standings {
+  padding: var(--space-5);
+}
+
+.race-standings-title {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-tertiary);
+  margin-bottom: var(--space-4);
+}
+
+.race-standings-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.race-standing-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border: var(--border-black-thin);
+  background: var(--bg-surface);
+  box-shadow: var(--shadow-brutal-sm);
+}
+
+.race-standing-row-winner {
+  background: var(--brutal-yellow);
+  border: var(--border-black);
+  box-shadow: var(--shadow-brutal);
+  color: #000000;
+}
+
+.race-standing-rank {
+  font-family: var(--font-mono);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-black);
+  min-width: 28px;
+}
+
+.race-standing-name {
+  flex: 1;
+  font-family: var(--font-display);
+  font-weight: var(--weight-bold);
+  font-size: var(--text-md);
+}
+
+.race-standing-time {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  color: var(--text-secondary);
+}
+
+/* ---- Performance Comparison ---- */
+.race-perf-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.race-perf-title {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-tertiary);
+}
+
+.race-perf-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--space-3);
+}
+
+.race-perf-card {
+  padding: var(--space-4);
+  border: var(--border-black);
+  box-shadow: var(--shadow-brutal-sm);
+  background: var(--bg-surface);
+}
+
+.race-perf-card-name {
+  font-family: var(--font-display);
+  font-weight: var(--weight-bold);
+  font-size: var(--text-md);
+  margin-bottom: var(--space-3);
+  padding-bottom: var(--space-2);
+  border-bottom: var(--border-black-thin);
+}
+
+.race-perf-metrics {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.race-perf-metric-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3px 0;
+}
+
+.race-perf-metric-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+
+.race-perf-metric-value {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  color: var(--text-primary);
+}
+
+.race-perf-complexity-badge {
+  margin-top: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  background: var(--bg-secondary);
+  border: var(--border-black-thin);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  text-align: center;
+}
+
+/* ---- Insight panel ---- */
+.race-insight {
+  padding: var(--space-4);
+  background: var(--brutal-yellow);
+  color: #000000;
+  border: var(--border-black);
+  box-shadow: var(--shadow-brutal);
+}
+
+[data-theme="dark"] .race-insight {
+  background: var(--brutal-yellow);
+  color: #000000;
+}
+
+.race-insight-title {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #333;
+  margin-bottom: var(--space-2);
+}
+
+.race-insight-text {
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+}
+
+/* ---- Race status badge ---- */
+.race-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border: 2px solid var(--border-default);
+  box-shadow: 2px 2px 0 var(--node-shadow);
+}
+
+.race-status-idle {
+  background: var(--bg-surface);
+  color: var(--text-primary);
+}
+
+.race-status-running {
+  background: var(--brutal-lime);
+  color: #000000;
+  animation: race-pulse 1.5s ease-in-out infinite;
+}
+
+.race-status-paused {
+  background: var(--brutal-yellow);
+  color: #000000;
+}
+
+.race-status-done {
+  background: var(--brutal-blue);
+  color: #FFFFFF;
+}
+
+@keyframes race-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+  .race-page {
+    padding: var(--space-4);
+  }
+
+  .race-hero-title {
+    font-size: var(--text-2xl);
+  }
+
+  .race-algo-grid {
+    flex-direction: column;
+  }
+
+  .race-algo-btn {
+    min-width: 100%;
+  }
+
+  .race-track-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .race-track-metrics {
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .race-bars-container {
+    height: 70px;
+  }
+
+  .race-perf-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .race-controls {
+    flex-direction: column;
+  }
+
+  .race-ctrl-btn {
+    width: 100%;
+  }
+
+  .race-winner-card {
+    padding: var(--space-4) var(--space-6);
+  }
+
+  .race-winner-name {
+    font-size: var(--text-xl);
+  }
+}

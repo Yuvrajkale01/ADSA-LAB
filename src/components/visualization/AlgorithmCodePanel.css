@@ -1,0 +1,167 @@
+/* ============================================
+   AlgorithmCodePanel — Neo-Brutalist Source View
+   Solid black outlines, hard offset shadows,
+   synchronized line execution highlight
+   ============================================ */
+
+.acp {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0 !important;
+  width: 100%;
+  min-height: 320px;
+  border-radius: var(--radius-xs);
+  background: #18181B;
+  border: var(--border-black);
+  box-shadow: var(--shadow-brutal);
+  overflow: hidden;
+  transition: box-shadow var(--transition-fast);
+  user-select: text;
+}
+
+.acp:hover {
+  box-shadow: var(--shadow-brutal-lg);
+}
+
+/* Expanded View */
+.acp.acp-expanded {
+  min-height: 520px;
+}
+
+/* Header Bar */
+.acp-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background: var(--bg-surface);
+  border-bottom: 2px solid #000000;
+  flex-shrink: 0;
+}
+
+.acp-header-left,
+.acp-header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Language selector */
+.acp-lang-select {
+  appearance: none;
+  background: var(--brutal-yellow);
+  border: 1.5px solid #000000;
+  box-shadow: 1.5px 1.5px 0 #000000;
+  color: #000000;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 800;
+  padding: 4px 22px 4px 8px;
+  cursor: pointer;
+  outline: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='none' stroke='%23000000' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m1 1 4 4 4-4'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 6px center;
+  transition: transform var(--transition-fast);
+}
+
+.acp-lang-select:hover {
+  transform: translate(-1px, -1px);
+}
+
+.acp-title {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 800;
+  color: #000000;
+  letter-spacing: 0.05em;
+}
+
+.acp-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: #FFFFFF;
+  border: 1.5px solid #000000;
+  box-shadow: 1.5px 1.5px 0 #000000;
+  color: #000000;
+  cursor: pointer;
+  transition: all 100ms ease;
+}
+
+.acp-btn:hover {
+  background: var(--bg-secondary);
+  transform: translate(-1px, -1px);
+}
+
+.acp-btn:active {
+  transform: translate(1px, 1px);
+  box-shadow: 0 0 0 #000;
+}
+
+/* Code Container */
+.acp-code-container {
+  flex: 1;
+  overflow: auto;
+  padding: 12px 0;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  line-height: 1.75;
+  background: #18181B;
+}
+
+.acp-line {
+  display: flex;
+  align-items: flex-start;
+  padding: 0 16px;
+  position: relative;
+  transition: background-color var(--transition-fast);
+}
+
+.acp-line-number {
+  min-width: 36px;
+  color: #71717A;
+  user-select: none;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.acp-line-content {
+  flex: 1;
+  color: #E4E4E7;
+  white-space: pre;
+}
+
+/* Active Line: High-contrast Neo-Brutalist Highlight */
+.acp-line-active {
+  background: var(--brutal-yellow) !important;
+  color: #000000 !important;
+  font-weight: 700;
+  border-left: 4px solid #000000;
+}
+
+.acp-line-active .acp-line-number {
+  color: #000000 !important;
+  font-weight: 800;
+}
+
+.acp-line-active .acp-line-content {
+  color: #000000 !important;
+}
+
+/* Tokens */
+.acp-keyword { color: #F472B6; font-weight: 700; }
+.acp-function { color: #60A5FA; font-weight: 600; }
+.acp-number { color: #FACC15; }
+.acp-string { color: #A3E635; }
+.acp-comment { color: #71717A; font-style: italic; }
+
+.acp-line-active .acp-keyword,
+.acp-line-active .acp-function,
+.acp-line-active .acp-number,
+.acp-line-active .acp-string,
+.acp-line-active .acp-comment {
+  color: #000000 !important;
+}

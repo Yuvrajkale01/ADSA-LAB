@@ -1,0 +1,126 @@
+/* ============================================
+   Min Heap Visualizer — Styles
+   Replicating the reference screenshot
+   ============================================ */
+
+.min-heap-page .heap-canvas {
+  position: relative;
+  background: #11141b;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px;
+  min-height: 420px;
+}
+
+/* Op indicator in top-left */
+.heap-op-indicator {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  color: #8b949e;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* Tree container */
+.heap-tree-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  min-height: 240px;
+}
+
+.heap-tree-svg {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  overflow: visible;
+}
+
+/* Heap Circle styling */
+.heap-circle {
+  fill: #1a2230;
+  stroke: #388bfd;
+  stroke-width: 2.2px;
+  transition: all 0.25s ease;
+}
+
+.heap-circle-active {
+  fill: #1f3a60;
+  stroke: #58a6ff;
+  stroke-width: 3px;
+  filter: drop-shadow(0 0 10px rgba(56, 139, 253, 0.45));
+}
+
+.heap-circle-parent {
+  fill: #2d2616;
+  stroke: #d29922;
+  stroke-width: 2.5px;
+}
+
+/* Array view at bottom of canvas */
+.heap-array-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.heap-array-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  color: #8b949e;
+  font-weight: 500;
+}
+
+.heap-array-cells {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.heap-cell-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.heap-cell-box {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #1a2230;
+  border: 1.5px solid rgba(56, 139, 253, 0.4);
+  border-radius: 6px;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.heap-cell-active .heap-cell-box {
+  background: #1f3a60;
+  border-color: #58a6ff;
+  box-shadow: 0 0 10px rgba(56, 139, 253, 0.4);
+  transform: scale(1.05);
+}
+
+.heap-cell-idx {
+  font-size: 11px;
+  color: #8b949e;
+}
+
+.heap-cell-active .heap-cell-idx {
+  color: #58a6ff;
+  font-weight: 600;
+}

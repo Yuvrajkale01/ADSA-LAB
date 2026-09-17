@@ -1,0 +1,91 @@
+/* ============================================
+   ExplanationPanel — Neo-Brutalist Step Telemetry
+   Solid black outlines, hard offset shadows, high legibility
+   ============================================ */
+
+.explanation-panel {
+  background: var(--bg-surface);
+  border: var(--border-black);
+  box-shadow: var(--shadow-brutal);
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 380px;
+  overflow-y: auto;
+}
+
+.explanation-empty {
+  color: var(--text-tertiary);
+  font-size: var(--text-sm);
+  text-align: center;
+  padding: var(--space-6) var(--space-4);
+  line-height: 1.5;
+  font-family: var(--font-mono);
+}
+
+.explanation-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding-bottom: 8px;
+  border-bottom: 2px solid #000000;
+}
+
+.explanation-step {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: #000000;
+  padding: 2px 8px;
+  background: var(--bg-secondary);
+  border: 1.5px solid #000000;
+  box-shadow: 1.5px 1.5px 0 #000000;
+}
+
+.explanation-operation {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #000000;
+  padding: 3px 8px;
+  background: var(--brutal-yellow);
+  border: 1.5px solid #000000;
+  box-shadow: 1.5px 1.5px 0 #000000;
+}
+
+.explanation-section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.explanation-section-title {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #000000;
+}
+
+.explanation-text {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.explanation-detail {
+  font-size: 12px;
+  line-height: 1.55;
+  color: #000000;
+  background: var(--bg-primary);
+  padding: 10px 12px;
+  border: 1.5px solid #000000;
+  box-shadow: 2px 2px 0 #000000;
+  font-family: var(--font-mono);
+}

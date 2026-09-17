@@ -1,0 +1,258 @@
+/* ============================================
+   TopNav — Neo-Brutalist Header Styling
+   Bold outlines, hard shadows, tactile interactions
+   ============================================ */
+
+.brutal-header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+  width: 100%;
+}
+
+.top-nav {
+  height: var(--nav-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-6);
+  background: var(--bg-surface);
+  border-bottom: var(--border-black);
+}
+
+/* Left Brand */
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* Menu toggle is strictly hidden on desktop */
+.nav-mobile-menu-btn {
+  display: none !important;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: var(--text-primary);
+  user-select: none;
+}
+
+.nav-logo-glyph {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: var(--brutal-yellow);
+  color: #000000;
+  border: 2px solid var(--border-default);
+  box-shadow: 2px 2px 0 var(--node-shadow);
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 800;
+  transform: rotate(-3deg);
+  transition: transform 140ms ease;
+}
+
+.nav-logo:hover .nav-logo-glyph {
+  transform: rotate(4deg) scale(1.06);
+}
+
+.nav-logo-text {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 1.4rem;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: var(--text-primary);
+}
+
+.nav-logo-badge {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  background: var(--brutal-lime);
+  color: #000000;
+  padding: 2px 6px;
+  border: 1.5px solid var(--border-default);
+  box-shadow: 1.5px 1.5px 0 var(--node-shadow);
+}
+
+/* Center Links */
+.nav-center {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--text-primary);
+  text-decoration: none;
+  padding: 6px 14px;
+  border: 2px solid transparent;
+  border-radius: 0;
+  transition: all 120ms ease;
+}
+
+.nav-link:hover {
+  background: var(--bg-secondary);
+  border-color: var(--border-default);
+  box-shadow: 2px 2px 0 var(--node-shadow);
+  transform: translate(-1px, -1px);
+}
+
+.nav-link-active {
+  background: var(--text-primary) !important;
+  color: var(--text-inverse) !important;
+  border-color: var(--border-default) !important;
+  box-shadow: 3px 3px 0 var(--brutal-yellow) !important;
+}
+
+.nav-link-highlight {
+  color: var(--text-primary);
+}
+
+.nav-link-icon {
+  color: var(--brutal-coral);
+}
+
+.nav-link-active .nav-link-icon {
+  color: var(--brutal-yellow);
+}
+
+/* Right Actions */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.nav-action-btn {
+  height: 38px;
+  padding: 0 12px;
+  background: var(--bg-surface);
+  color: var(--text-primary);
+}
+
+.nav-shortcut-key {
+  font-size: 10px;
+  font-weight: 700;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-default);
+  padding: 1px 4px;
+  margin-left: 4px;
+}
+
+/* Obvious Theme Toggle Button with Icon & Label */
+.nav-theme-toggle-btn {
+  height: 38px;
+  padding: 0 12px;
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  gap: 7px;
+}
+
+.theme-toggle-icon {
+  flex-shrink: 0;
+  transition: transform 160ms ease;
+}
+
+.sun-icon {
+  color: #D97706; /* Warm amber in light mode */
+}
+
+.moon-icon {
+  color: var(--brutal-yellow); /* Bright gold in dark mode */
+}
+
+.nav-theme-toggle-btn:hover .theme-toggle-icon {
+  transform: rotate(20deg) scale(1.1);
+}
+
+.nav-theme-label {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: var(--text-primary);
+}
+
+.nav-cta-btn {
+  height: 38px;
+  padding: 0 16px;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+
+.nav-cta-arrow {
+  font-size: 14px;
+  transition: transform 120ms ease;
+}
+
+.nav-cta-btn:hover .nav-cta-arrow {
+  transform: translateX(3px);
+}
+
+/* Search Input */
+.nav-search-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
+  height: 38px;
+  background: var(--bg-surface);
+  border: var(--border-black);
+  box-shadow: var(--shadow-brutal-sm);
+}
+
+.nav-search-icon {
+  color: var(--text-tertiary);
+}
+
+.nav-search-input {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: var(--text-xs);
+  width: 220px;
+  color: var(--text-primary);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .nav-center {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-mobile-menu-btn {
+    display: inline-flex !important;
+    width: 38px;
+    height: 38px;
+    padding: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .nav-shortcut-key {
+    display: none;
+  }
+  .nav-cta-btn {
+    display: none;
+  }
+  .top-nav {
+    padding: 0 var(--space-4);
+  }
+}

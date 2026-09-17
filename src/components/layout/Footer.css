@@ -1,0 +1,169 @@
+/* ========================================================
+   NEO-BRUTALIST GLOBAL FOOTER
+   Responsive, high-contrast, tactile layout footer
+   ======================================================== */
+
+.brutal-footer {
+  background: var(--bg-surface);
+  border-top: var(--border-black-thick);
+  padding-top: var(--space-12);
+  width: 100%;
+  margin-top: auto;
+}
+
+.footer-container {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-6) var(--space-10);
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: var(--space-8);
+}
+
+.footer-brand-col {
+  max-width: 440px;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: var(--space-3);
+}
+
+.footer-logo-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: var(--brutal-yellow);
+  color: #000000;
+  border: 2px solid var(--border-default);
+  box-shadow: 2px 2px 0 var(--node-shadow);
+  font-weight: 800;
+}
+
+.footer-logo-text {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 1.25rem;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+}
+
+.footer-copy {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--space-4);
+}
+
+.footer-stamp {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  padding: 4px 8px;
+  border: 1px solid var(--border-default);
+  display: inline-block;
+}
+
+.footer-links-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-col-title {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.footer-link {
+  font-size: 13px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 120ms ease;
+}
+
+.footer-link:hover {
+  color: var(--brutal-blue);
+  text-decoration: underline;
+}
+
+.footer-author-box {
+  background: var(--bg-secondary);
+  border: 2px solid var(--border-default);
+  box-shadow: 3px 3px 0 var(--node-shadow);
+  padding: var(--space-3) var(--space-4);
+}
+
+.footer-author-name {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.footer-author-role {
+  font-size: 11px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.footer-bottom-bar {
+  border-top: 2px solid var(--border-default);
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  padding: 16px var(--space-6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.footer-authorship-tag {
+  color: var(--text-primary);
+  font-weight: 800;
+  background: var(--brutal-yellow);
+  padding: 3px 8px;
+  border: 1px solid var(--border-default);
+  box-shadow: 2px 2px 0 var(--node-shadow);
+  color: #000000;
+  display: inline-block;
+}
+
+/* ========================================================
+   RESPONSIVE BREAKPOINTS
+   ======================================================== */
+@media (max-width: 1024px) {
+  .footer-container {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-6);
+  }
+}
+
+@media (max-width: 640px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    padding: 0 var(--space-4) var(--space-8);
+  }
+
+  .footer-bottom-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 14px var(--space-4);
+    gap: var(--space-2);
+  }
+}

@@ -1,0 +1,271 @@
+/* ============================================
+   Visualizer Hub Styles — Neo-Brutalist Directory
+   Solid outlines, hard offset shadows, Light/Dark parity
+   ============================================ */
+
+.hub-page {
+  background-color: var(--bg-primary);
+  min-height: calc(100vh - var(--nav-height));
+  padding-bottom: var(--space-20);
+}
+
+.hub-header-block {
+  background: var(--bg-surface);
+  border-bottom: var(--border-black);
+  padding: var(--space-12) var(--space-6) var(--space-10);
+}
+
+.hub-header-container {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+}
+
+.hub-kicker {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  background: var(--brutal-yellow);
+  color: #000000;
+  padding: 3px 8px;
+  border: 1.5px solid var(--border-default);
+  box-shadow: 2px 2px 0 var(--node-shadow);
+  margin-bottom: var(--space-3);
+}
+
+.hub-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.5vw, 3.25rem);
+  font-weight: 900;
+  letter-spacing: -0.035em;
+  color: var(--text-primary);
+  margin-bottom: var(--space-3);
+}
+
+.hub-subtitle {
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  color: var(--text-secondary);
+  max-width: 720px;
+  margin-bottom: var(--space-8);
+}
+
+/* Controls */
+.hub-controls-row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: 860px;
+}
+
+.hub-search-box {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: var(--bg-surface);
+  border: var(--border-black);
+  box-shadow: var(--shadow-brutal);
+  padding: 10px 14px;
+}
+
+.hub-search-icon {
+  color: var(--text-tertiary);
+  flex-shrink: 0;
+}
+
+.hub-search-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--text-primary);
+  width: 100%;
+}
+
+.hub-search-clear {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-default);
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--text-primary);
+  cursor: pointer;
+  padding: 2px 6px;
+}
+
+.hub-unit-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.hub-filter-btn {
+  background: var(--bg-surface);
+  border: 1.5px solid var(--border-default);
+  box-shadow: 2px 2px 0 var(--node-shadow);
+  padding: 6px 14px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 120ms ease;
+}
+
+.hub-filter-btn:hover {
+  background: var(--bg-secondary);
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0 var(--node-shadow);
+}
+
+.hub-filter-btn-active {
+  background: var(--text-primary) !important;
+  color: var(--text-inverse) !important;
+  border-color: var(--border-default) !important;
+  box-shadow: 3px 3px 0 var(--brutal-yellow) !important;
+  transform: translate(-1px, -1px);
+}
+
+/* Container */
+.hub-container {
+  max-width: var(--content-max-width);
+  margin: var(--space-8) auto 0;
+  padding: 0 var(--space-6);
+}
+
+.hub-results-meta {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: var(--text-tertiary);
+  margin-bottom: var(--space-4);
+}
+
+.hub-directory-table-wrapper {
+  background: var(--bg-surface);
+  border: var(--border-black-thick);
+  box-shadow: var(--shadow-brutal-xl);
+  overflow-x: auto;
+}
+
+.hub-directory-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.hub-directory-table th {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  padding: 14px 18px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-bottom: var(--border-black);
+  border-right: 1.5px solid var(--border-subtle);
+}
+
+.hub-directory-table td {
+  padding: 16px 18px;
+  border-bottom: 1.5px solid var(--border-subtle);
+  border-right: 1.5px solid var(--border-subtle);
+  vertical-align: middle;
+  color: var(--text-primary);
+}
+
+.hub-directory-row:last-child td {
+  border-bottom: none;
+}
+
+.hub-directory-row:hover {
+  background-color: var(--bg-secondary);
+}
+
+.hub-cell-main {
+  max-width: 480px;
+}
+
+.hub-algo-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  margin-bottom: 4px;
+}
+
+.hub-algo-title {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.hub-algo-link:hover .hub-algo-title {
+  color: var(--brutal-blue);
+}
+
+.hub-algo-featured {
+  font-size: 10px;
+  font-weight: 800;
+  background: var(--brutal-lime);
+  color: #000000;
+  padding: 1px 6px;
+  border: 1px solid var(--border-default);
+  box-shadow: 1px 1px 0 var(--node-shadow);
+}
+
+.hub-algo-desc {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.hub-unit-pill {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 800;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  padding: 4px 8px;
+  border: 1.5px solid var(--border-default);
+  box-shadow: 2px 2px 0 var(--node-shadow);
+}
+
+.hub-complexity-badge {
+  font-size: 11px;
+  font-weight: 800;
+  background: var(--brutal-yellow);
+  color: #000000;
+  padding: 4px 8px;
+  border: 1.5px solid var(--border-default);
+  box-shadow: 2px 2px 0 var(--node-shadow);
+}
+
+.hub-launch-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: var(--brutal-blue);
+  color: #FFFFFF;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 800;
+  text-decoration: none;
+  border: 1.5px solid var(--border-default);
+  box-shadow: 2px 2px 0 var(--node-shadow);
+  transition: all 120ms ease;
+}
+
+.hub-launch-btn:hover {
+  background: var(--accent-primary-hover);
+  transform: translate(-1.5px, -1.5px);
+  box-shadow: 3.5px 3.5px 0 var(--node-shadow);
+}
+
+.hub-launch-btn:active {
+  transform: translate(1.5px, 1.5px);
+  box-shadow: 1px 1px 0 var(--node-shadow);
+}
