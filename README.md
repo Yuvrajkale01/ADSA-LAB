@@ -11,7 +11,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Author: Yuvraj K.](https://img.shields.io/badge/Author-Yuvraj%20K.-blue.svg)](https://github.com/Yuvrajkale01)
 
-[**✨ VIEW LIVE PROJECT ✨**](https://temporary-prompt-marble-t9vkpmp.vercel.app) • [**📂 GITHUB REPOSITORY**](https://github.com/Yuvrajkale01/ADSA-LAB)
+[**✨ VIEW LIVE PROJECT ✨**](https://adsa-lab.vercel.app/) • [**📂 GITHUB REPOSITORY**](https://github.com/Yuvrajkale01/ADSA-LAB)
 
 <br/>
 
